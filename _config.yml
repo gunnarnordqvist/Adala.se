@@ -1,0 +1,7 @@
+title: Ådala Frukt och Grönt AB
+description: Officiell webbplats för Ådala Frukt och Grönt AB – Lokala produkter direkt från gården.
+url: "https://gunnarnordqvist.github.io/adalase-website"
+baseurl: "/adalase-website"
+remote_theme: jekyll/minima # Ett enkelt tema för att starta med
+plugins:
+  - jekyll-feed

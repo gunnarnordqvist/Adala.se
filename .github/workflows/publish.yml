@@ -1,0 +1,32 @@
+name: Deploy Jekyll site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Trigga workflow när kod pushas till main-grenen
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest # Kör jobbet på en Ubuntu-miljö
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4 # Steg 1: Hämta källkoden från repositoriet
+
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.x' # Använd en kompatibel Ruby-version för Jekyll
+        bundler-cache: true # Installera och cachea Gemfile.lock
+
+    - name: Install Jekyll and dependencies
+      run: bundle install # Steg 3: Installera Jekyll och dess beroenden
+
+    - name: Build Jekyll site
+      run: bundle exec jekyll build # Steg 4: Bygg den statiska Jekyll-webbplatsen
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3 # Steg 5: Använd en populär action för att deploya till GitHub Pages
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }} # Använder GitHubs inbyggda token
+        publish_dir: ./_site # Mappen som Jekyll bygger webbplatsen i
