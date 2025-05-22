@@ -16,7 +16,7 @@ jobs:
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.x' # Använd en kompatibel Ruby-version för Jekyll
+        ruby-version: '3.4.1' # Använd en kompatibel Ruby-version för Jekyll
         bundler-cache: true # Installera och cachea Gemfile.lock
 
     - name: Install Jekyll and dependencies
